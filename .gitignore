@@ -1,0 +1,41 @@
+# OS 파일
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# 에디터 설정
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# 로컬 환경 설정
+.env
+.env.local
+
+# 빌드 파일
+dist/
+build/
+
+# 임시 파일
+*.tmp
+*.temp
+*.log
