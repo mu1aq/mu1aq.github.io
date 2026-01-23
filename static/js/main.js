@@ -1,123 +1,51 @@
-// Animated Background with Particles Only (No Grid)
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
 
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
+// Load saved theme from localStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+htmlElement.classList.remove('light', 'dark');
+htmlElement.classList.add(savedTheme);
 
-// Set canvas size
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
+// Toggle theme on button click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    htmlElement.classList.remove(currentTheme);
+    htmlElement.classList.add(newTheme);
+    
+    // Save to localStorage
+    localStorage.setItem('theme', newTheme);
+});
 
-// Particle system
-class Particle {
-    constructor() {
-        this.reset();
-    }
+// Project Click Redirects
+const projectItems = document.querySelectorAll('.list-item.clickable');
 
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 2 + 1;
-        this.life = Math.random() * 100;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.life += 0.5;
-
-        // Respawn if out of bounds
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-            this.reset();
-        }
-
-        // Pulsing effect
-        if (this.life > 100) {
-            this.life = 0;
-        }
-    }
-
-    draw() {
-        const alpha = 0.3 + Math.sin(this.life * 0.05) * 0.3;
-        ctx.fillStyle = `rgba(19, 200, 236, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-// Create particles
-const particles = [];
-const particleCount = 80;
-for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
-}
-
-// Draw connections between nearby particles
-function drawConnections() {
-    ctx.strokeStyle = 'rgba(19, 200, 236, 0.15)';
-    ctx.lineWidth = 1;
-
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 150) {
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
-            }
-        }
-    }
-}
-
-// Animation loop
-function animate() {
-    // Pure black background
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    drawConnections();
-
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-    });
-
-    requestAnimationFrame(animate);
-}
-
-animate();
-
-// Mouse interaction - attract particles
-let mouseX = 0;
-let mouseY = 0;
-
-canvas.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    particles.forEach(particle => {
-        const dx = mouseX - particle.x;
-        const dy = mouseY - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 100) {
-            particle.vx += dx * 0.0001;
-            particle.vy += dy * 0.0001;
+projectItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const link = item.getAttribute('data-link');
+        if (link) {
+            window.open(link, '_blank'); // 새 탭에서 열기
+            // 또는 window.location.href = link; // 같은 탭에서 열기
         }
     });
 });
 
-// Smooth scroll for navigation
+// Contact Button Redirect
+const contactBtn = document.getElementById('contact-btn');
+
+contactBtn.addEventListener('click', () => {
+    // 원하는 링크로 변경하세요
+    const contactLink = 'mailto:your-email@example.com'; // 이메일
+    // const contactLink = 'https://twitter.com/yourusername'; // Twitter
+    // const contactLink = 'https://linkedin.com/in/yourprofile'; // LinkedIn
+    // const contactLink = '/contact.html'; // 다른 페이지
+    
+    window.location.href = contactLink;
+});
+
+// Smooth scroll for anchor links (if any)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
