@@ -37,7 +37,7 @@ const contactBtn = document.getElementById('contact-btn');
 
 contactBtn.addEventListener('click', () => {
     // 원하는 링크로 변경하세요
-    const contactLink = 'mailto:your-email@example.com'; // 이메일
+    const contactLink = 'https://linktr.ee/0x653o';
     // const contactLink = 'https://twitter.com/yourusername'; // Twitter
     // const contactLink = 'https://linkedin.com/in/yourprofile'; // LinkedIn
     // const contactLink = '/contact.html'; // 다른 페이지
