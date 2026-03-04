@@ -1,0 +1,70 @@
+{
+    "config": {
+        "active_version": "v5"
+    },
+    "user": {
+        "name": "JunSeo",
+        "handle": "0x653o",
+        "role": "Security Researcher",
+        "location": "Seoul, KR",
+        "bio": "Studying the deep architecture of complex systems to discover vulnerabilities where they are least expected.",
+        "status": "ONLINE_RESEARCHING"
+    },
+    "affiliations": [
+        "RedCat Pentesting Team",
+        "Cyb3rPunk! (Advisor)",
+        "SSG (Academic Director)",
+        "Sejong University"
+    ],
+    "studying": [
+        "Algorithms & Data Structures",
+        "Multi-threaded Concurrency Patterns",
+        "Low-level Exploit Scripting (C/C++)"
+    ],
+    "focus": [
+        {
+            "category": "V8 & Browser",
+            "desc": "JIT artifacts and Turbofan optimization analysis."
+        },
+        {
+            "category": "Kernel Internals",
+            "desc": "Privilege escalation and heap grooming at Ring 0."
+        },
+        {
+            "category": "Hardware Security",
+            "desc": "Firmware extraction and JTAG debugging."
+        },
+        {
+            "category": "Bug Bounty",
+            "desc": "Responsible disclosure & zero-day research."
+        },
+        {
+            "category": "Networking",
+            "desc": "Building connections in the security community."
+        }
+    ],
+    "projects": [
+        {
+            "year": "2026",
+            "title": "IPCam Research",
+            "tag": "HARDWARE",
+            "desc": "Firmware extraction & mobile app decompilation. 5 CVEs / 3 KVEs.",
+            "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis"
+        },
+        {
+            "year": "2026",
+            "title": "Web3 BugBounty",
+            "tag": "DEFI",
+            "desc": "Ethernaut solving & DeFi bug hunting.",
+            "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH"
+        },
+        {
+            "year": "2023",
+            "title": "Reflective XSS Fuzzer",
+            "tag": "WEB_SEC",
+            "desc": "Automated reflective XSS vulnerability analysis.",
+            "link": ""
+        }
+    ],
+    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS"]
+}

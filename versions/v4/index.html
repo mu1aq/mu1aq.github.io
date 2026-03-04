@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0x653o // HOLOGRAPHIC HUD INTERFACE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="hud-body">
+    <div class="scanlines"></div>
+    <div class="hologram-glow"></div>
+    
+    <div class="hud-container">
+        <!-- TOP HUD BAR -->
+        <header class="hud-header">
+            <div class="header-left">
+                <div class="hud-logo glitch" data-text="0x653o">0x653o</div>
+                <div class="system-status">
+                    <span class="status-label">STATUS:</span>
+                    <span class="status-value pulse">ONLINE_RESEARCHING</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="coord-display">
+                    <span class="coords">LAT: 37.5665 / LONG: 126.9780</span>
+                    <span class="timestamp" id="hud-clock">00:00:00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="hud-main">
+            <!-- LEFT COLUMN: Profile & Bio -->
+            <aside class="hud-sidebar left">
+                <div class="hud-module profile-mod">
+                    <div class="module-header">USER_PROFILE</div>
+                    <div class="module-content">
+                        <div class="avatar-hud">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-inner">0x</div>
+                        </div>
+                        <h1 class="user-name">JunSeo</h1>
+                        <p class="user-desc">Systems security research & deep internal discovery.</p>
+                    </div>
+                </div>
+
+                <div class="hud-module list-mod">
+                    <div class="module-header">AFFILIATIONS</div>
+                    <div class="module-content">
+                        <ul class="hud-list">
+                            <li>RedCat Pentesting Team</li>
+                            <li>Cyb3rPunk! (Advisor)</li>
+                            <li>SSG (Academic Director)</li>
+                            <li>Sejong Univ.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hud-module list-mod">
+                    <div class="module-header">ACADEMIC_FOCUS</div>
+                    <div class="module-content">
+                        <ul class="hud-list">
+                            <li>Algorithms & Data Structures</li>
+                            <li>Concurrency Patterns</li>
+                            <li>Exploit Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- CENTER COLUMN: Visualizer & Research -->
+            <div class="hud-center">
+                <div class="hud-module visualizer-mod">
+                    <div class="module-header">SYSTEM_VISUALIZER</div>
+                    <div class="visualizer-content">
+                        <div class="viz-hero">
+                            <div class="viz-orb"></div>
+                            <div class="viz-text">
+                                <span class="viz-primary">V8 / KERNEL / BROWSER</span>
+                                <span class="viz-secondary">DECONSTRUCTING ARCHITECTURES</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hud-module research-mod">
+                    <div class="module-header">RESEARCH_OBJECTIVES</div>
+                    <div class="module-content">
+                        <div class="research-grid">
+                            <div class="research-item">
+                                <span class="res-num">01</span>
+                                <span class="res-title">V8 JIT</span>
+                                <p>Turbofan optimization analysis</p>
+                            </div>
+                            <div class="research-item">
+                                <span class="res-num">02</span>
+                                <span class="res-title">RING 0</span>
+                                <p>Kernel heap grooming techniques</p>
+                            </div>
+                            <div class="research-item">
+                                <span class="res-num">03</span>
+                                <span class="res-title">FIRMWARE</span>
+                                <p>JTAG/UART hardware debugging</p>
+                            </div>
+                            <div class="research-item">
+                                <span class="res-num">04</span>
+                                <span class="res-title">0-DAY</span>
+                                <p>Production environment discovery</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Projects & Skills -->
+            <aside class="hud-sidebar right">
+                <div class="hud-module projects-mod">
+                    <div class="module-header">INTEL_LOGS</div>
+                    <div class="module-content">
+                        <div class="hud-project-item">
+                            <div class="hp-meta">2026_IPCAM_VULN</div>
+                            <h3 class="hp-title">IPCam Research</h3>
+                            <p class="hp-desc">Firmware extraction & mobile app decompilation.</p>
+                            <span class="hp-result">STATUS: 5 CVEs / 3 KVEs</span>
+                        </div>
+                        <div class="hud-project-item">
+                            <div class="hp-meta">2026_WEB3_ETH</div>
+                            <h3 class="hp-title">Web3 BugBounty</h3>
+                            <p class="hp-desc">Ethernaut solving & DeFi bug hunting.</p>
+                            <span class="hp-result">STATUS: REPORT_PENDING</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hud-module tech-mod">
+                    <div class="module-header">TECH_STACK</div>
+                    <div class="module-content">
+                        <div class="skill-tags">
+                            <span>C/C++</span>
+                            <span>PYTHON</span>
+                            <span>JS</span>
+                            <span>GDB</span>
+                            <span>IDA</span>
+                            <span>BURP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hud-module contact-mod">
+                    <div class="module-header">COMMUNICATION_LINK</div>
+                    <div class="module-content">
+                        <p>READY_FOR_ENGAGEMENT</p>
+                        <a href="mailto:contact@0x653o.me" class="hud-btn">INITIATE_CONTACT</a>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="hud-footer">
+            <div class="footer-line"></div>
+            <div class="footer-data">
+                <span>ENCRYPTED_SESSION_ESTABLISHED</span>
+                <span>VER: 4.0.0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
