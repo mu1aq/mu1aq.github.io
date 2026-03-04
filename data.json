@@ -1,71 +1,154 @@
 {
-    "user": {
-        "name": "JunSeo",
-        "handle": "0x653o · Mu1aq",
-        "email": "6_s3o.xin@sju.ac.kr",
-        "role": "Pentest Researcher",
-        "location": "Seoul, KR",
-        "bio": "Studying the deep architecture of complex systems to discover vulnerabilities where they are least expected.",
-        "status": "Sejong univ. sophomore / studying hard...."
-    },
-    "about": {
-        "title": "ABOUT",
-        "content": "A cybersecurity researcher focused on the internals of modern software. \n and view status as pentester"
-    },
-    "affiliations": [
-        "RedCat Pentesting Team",
-        "Cyb3rPunk! (Advisor)",
-        "SSG (Security . Security . Group)",
-        "Sejong University"
-    ],
-    "studying": [
-        "Algorithms & Data Structures",
-        "Multi-threaded Concurrency Patterns",
-        "Low-level Exploit Scripting (C/C++)",
-        "Advanced Web Security",
-        "Windows Internals & Kernel Exploitation"
-    ],
-    "focus": [
-        {
-            "category": "V8 Engine Exploitation",
-            "desc": "Currently on hold"
+    "en": {
+        "user": {
+            "name": "JunSeo",
+            "handle": "0x653o · Mu1aq",
+            "email": "6_s3o.xin@sju.ac.kr",
+            "role": "Student",
+            "location": "SEOUL / KR",
+            "bio": "Studying the deep architecture of complex systems to discover vulnerabilities where they are least expected.",
+            "status": "Sejong Univ. Sophomore / Researching Internals"
         },
-        {
-            "category": "Linux Kernel Internals",
-            "desc": "Currently on hold"
+        "about": {
+            "title": "ABOUT",
+            "content": "A cybersecurity researcher focused on the internals of modern software."
         },
-        {
-            "category": "Hardware Security",
-            "desc": "Currently on hold"
-        },
-        {
-            "category": "Real-world Web Security",
-            "desc": "CVE reconstruction, N-day research in production environments"
-        },
-        {
-            "category": "Networking",
-            "desc": "Building connections in the security community."
+        "affiliations": [
+            "RedCat Pentesting Team",
+            "Cyb3rPunk! (Advisor)",
+            "SSG (Security . Security . Group)",
+            "Sejong University"
+        ],
+        "timeline": [
+            { 
+                "year": "2026 ~ ", 
+                "event": "Academic Director & Advisor Roles",
+                "detail": "Directing SSG Academic Curriculum / Advising Cyb3rPunk!"
+            },
+            { 
+                "year": "2025 - 2026", 
+                "event": "IPCam Vulnerability Analysis Research",
+                "detail": "SSG Embedded Project / Android Security Focus · Prticipant"
+            },
+            { 
+                "year": "2025 - 2026", 
+                "event": "Web3 BugBounty Research Project",
+                "detail": "DeFi & Ethereum Smart Contract Auditing · Project Lead"
+            },
+            {
+                "year": "2025", 
+                "event": "General Director",
+                "detail": "SSG General Director / Leading SSG's Few Operations"
+            },
+            { 
+                "year": "2023", 
+                "event": "Reflective XSS Fuzzer Development",
+                "detail": "Automation of Web Vulnerability Discovery"
+            }
+        ],
+        "speaking": [],
+        "community": [
+            { "role": "Academic Director", "org": "SSG (Security . Security . Group)" },
+            { "role": "Advisor", "org": "Cyb3rPunk!" },
+            { "role": "Researcher", "org": "RedCat Pentesting Team" }
+        ],
+        "projects": [
+            { "year": "2026", "title": "IPCam Research", "tag": "HARDWARE, Android", "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis" },
+            { "year": "2026", "title": "Web3 BugBounty", "tag": "DEFI, ETH", "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH" },
+            { "year": "2023", "title": "Reflective XSS Fuzzer", "tag": "WEB_SEC", "link": "" }
+        ],
+        "links": [
+            { "platform": "GitHub", "url": "https://github.com/0x653o", "label": "@0x653o" },
+            { "platform": "LinkedIn", "url": "#", "label": "JunSeo Shin" },
+            { "platform": "Blog", "url": "https://0x653o.github.io", "label": "Security Archive" }
+        ],
+        "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "OSINT"],
+        "labels": {
+            "studying": "STUDYING",
+            "focus": "ULTIMATE_FOCUS",
+            "works": "SELECTED_WORKS",
+            "stack": "TECH_STACK",
+            "timeline": "HISTORY",
+            "speaking": "SPEAKING",
+            "community": "COMMUNITY",
+            "contact": "CONTACT",
+            "links": "CONNECT"
         }
-    ],
-    "projects": [
-        {
-            "year": "2026",
-            "title": "IPCam Research",
-            "tag": "HARDWARE , ANDROID",
-            "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis"
+    },
+    "ko": {
+        "user": {
+            "name": "신준서",
+            "handle": "0x653o · Mu1aq",
+            "email": "6_s3o.xin@sju.ac.kr",
+            "role": "학생",
+            "location": "대한민국 / 서울",
+            "bio": "복잡한 시스템의 깊은 아키텍처를 연구하며, 예상치 못한 곳에서 취약점을 발견하는 것에 집중합니다.",
+            "status": "세종대학교 2학년 / 학업 중,,,"
         },
-        {
-            "year": "2026",
-            "title": "Web3 BugBounty",
-            "tag": "DEFI, ETH",
-            "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH"
+        "about": {
+            "title": "소개",
+            "content": "Pentesting과 보안 연구에 열정을 가진 학생입니다. 다양한 시스템에 대해 공부하고 있습니다."
         },
-        {
-            "year": "2023",
-            "title": "Reflective XSS Fuzzer",
-            "tag": "WEB_SEC",
-            "link": ""
+        "affiliations": [
+            "RedCat 취약점 분석 팀",
+            "Cyb3rPunk! (자문)",
+            "SSG (학술부장)",
+            "세종대학교"
+        ],
+        "timeline": [
+            { 
+                "year": "2026 ~ ", 
+                "event": "학술부장 및 자문 활동",
+                "detail": "SSG 학술 커리큘럼 총괄 / Cyb3rPunk! 운영 자문"
+            },
+            { 
+                "year": "2025 ~ 2026", 
+                "event": "IPCam 취약점 분석 연구",
+                "detail": "SSG 임베디드 프로젝트 리드 / 하드웨어 및 안드로이드 보안"
+            },
+            { 
+                "year": "2025 ~ 2026", 
+                "event": "Web3 버그바운티 연구 프로젝트",
+                "detail": "DeFi 및 이더리움 스마트 컨트랙트 오딧"
+            },
+            {
+                "year": "2025", 
+                "event": "총괄 디렉터",
+                "detail": "SSG 총괄 디렉터 / SSG의 몇몇 운영 리드"
+            },
+            { 
+                "year": "2023", 
+                "event": "XSS 퍼저 개발",
+                "detail": "웹 취약점 탐지 자동화 연구"
+            }
+        ],
+        "speaking": [],
+        "community": [
+            { "role": "학술부장", "org": "SSG (세종대학교 보안 동아리)" },
+            { "role": "자문", "org": "Cyb3rPunk!" },
+            { "role": "연구원", "org": "RedCat (보안 연구 팀)" }
+        ],
+        "projects": [
+            { "year": "2026", "title": "IPCam 취약점 연구", "tag": "HARDWARE, Android", "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis" },
+            { "year": "2026", "title": "Web3 버그바운티", "tag": "DEFI, ETH", "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH" },
+            { "year": "2023", "title": "반사형 XSS 퍼저", "tag": "WEB_SEC", "link": "" }
+        ],
+        "links": [
+            { "platform": "GitHub", "url": "https://github.com/0x653o", "label": "@0x653o" },
+            { "platform": "linktree", "url": "https://linktr.ee/0x653o", "label": "653o" },
+            { "platform": "Portfolio", "url": "https://0x653o.github.io", "label": "portfolio" }
+        ],
+        "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "V8", "OSINT"],
+        "labels": {
+            "studying": "학습 중",
+            "focus": "핵심 관심분야",
+            "works": "주요 프로젝트",
+            "stack": "기술 스택",
+            "timeline": "활동 이력",
+            "speaking": "강연 및 발표",
+            "community": "커뮤니티",
+            "contact": "문의",
+            "links": "연락 및 링크"
         }
-    ],
-    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "Forensics", "Fuzzing", "Vulnerability Research", "OSINT"]
+    }
 }

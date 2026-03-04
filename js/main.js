@@ -1,122 +1,169 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Fetch Data and Populate UI
+    let currentLang = 'en';
+    let globalData = null;
+
+    // 1. Fetch Data
     fetch('data.json?t=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
-            populateUI(data);
-            initAnimations();
+            globalData = data;
+            render(currentLang);
+            initLanguageToggle();
         })
         .catch(err => console.error('Error loading data:', err));
 
-    function populateUI(data) {
+    function render(lang) {
+        const data = globalData[lang];
+        if (!data) return;
+
         // User Info
-        if (document.getElementById('user-location')) document.getElementById('user-location').textContent = data.user.location;
-        if (document.getElementById('user-role')) document.getElementById('user-role').textContent = data.user.role;
-        if (document.getElementById('system-status')) document.getElementById('system-status').textContent = data.user.status;
+        setText('user-location', data.user.location);
+        setText('user-role', data.user.role);
+        setText('system-status', data.user.status);
         if (document.getElementById('hero-name-container')) {
             document.getElementById('hero-name-container').innerHTML = `${data.user.name} <span class="italic">${data.user.handle}</span>`;
         }
-        if (document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').textContent = data.user.bio;
+        setText('hero-subtitle', data.user.bio);
         
-        // About Section
-        if (document.getElementById('about-title')) document.getElementById('about-title').textContent = data.about.title;
-        if (document.getElementById('about-text')) document.getElementById('about-text').textContent = data.about.content;
+        // Labels
+        setText('label-about', data.labels.timeline ? data.en ? "ABOUT" : data.labels.about || "ABOUT" : "ABOUT"); 
+        // Re-mapping labels for clarity
+        setText('label-about', data.about.title);
+        setText('label-timeline', data.labels.timeline);
+        setText('label-speaking', data.labels.speaking);
+        setText('label-community', data.labels.community);
+        setText('label-works', data.labels.works);
+        setText('label-stack', data.labels.stack);
+        setText('label-links', data.labels.links);
 
-        // Contact link
-        if (document.getElementById('contact-link')) document.getElementById('contact-link').href = `mailto:${data.user.email}`;
+        // Content
+        setText('about-text', data.about.content);
+        const contactLink = document.getElementById('contact-link');
+        if (contactLink) {
+            contactLink.href = `mailto:${data.user.email}`;
+            contactLink.textContent = data.labels.contact;
+        }
 
         // Affiliations
-        const affContainer = document.getElementById('affiliations-container');
-        if (affContainer) {
-            affContainer.innerHTML = '';
-            data.affiliations.forEach(aff => {
-                const div = document.createElement('div');
-                div.className = 'aff-item';
-                div.textContent = aff.replace('· ', '');
-                affContainer.appendChild(div);
-            });
-        }
+        renderList('affiliations-container', data.affiliations, (item) => `<div class="aff-item">${item}</div>`);
 
-        // Studying
-        const studyContainer = document.getElementById('studying-container');
-        if (studyContainer) {
-            studyContainer.innerHTML = '';
-            data.studying.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                studyContainer.appendChild(li);
-            });
-        }
+        // Timeline (History) - Split Layout
+        renderList('timeline-container', data.timeline, (item, index) => {
+            const isEven = index % 2 === 0;
+            return `
+                <div class="tl-item">
+                    <div class="tl-left">
+                        ${isEven ? `
+                            <div class="tl-year-large">${item.year}</div>
+                            <div class="tl-event-text">${item.event}</div>
+                        ` : `
+                            <div class="tl-detail-text">${item.detail}</div>
+                        `}
+                    </div>
+                    <div class="tl-node"></div>
+                    <div class="tl-right">
+                        ${!isEven ? `
+                            <div class="tl-year-large">${item.year}</div>
+                            <div class="tl-event-text">${item.event}</div>
+                        ` : `
+                            <div class="tl-detail-text">${item.detail}</div>
+                        `}
+                    </div>
+                </div>
+            `;
+        });
 
-        // Focus
-        const focusContainer = document.getElementById('focus-container');
-        if (focusContainer) {
-            focusContainer.innerHTML = '';
-            data.focus.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'focus-entry';
-                div.innerHTML = `<h3>${item.category}</h3><p>${item.desc}</p>`;
-                focusContainer.appendChild(div);
-            });
-        }
+        // Speaking
+        renderList('speaking-container', data.speaking, (item) => `
+            <div class="project-row">
+                <span class="pr-year">${item.date}</span>
+                <span class="pr-title">${item.title}</span>
+                <span class="pr-tag">${item.link ? 'LINK' : ''}</span>
+            </div>
+        `);
+
+        // Community
+        renderList('community-container', data.community, (item) => `
+            <div class="community-entry">
+                <h3>${item.org}</h3>
+                <p>${item.role}</p>
+            </div>
+        `);
 
         // Projects
-        const projContainer = document.getElementById('projects-container');
-        if (projContainer) {
-            projContainer.innerHTML = '';
-            data.projects.forEach(proj => {
-                const el = document.createElement(proj.link ? 'a' : 'div');
-                if (proj.link) {
-                    el.href = proj.link;
-                    el.target = "_blank";
-                }
-                el.className = 'project-row';
-                el.innerHTML = `
-                    <span class="pr-year">${proj.year}</span>
-                    <span class="pr-title">${proj.title}</span>
-                    <span class="pr-tag">${proj.tag}</span>
-                `;
-                projContainer.appendChild(el);
-            });
-        }
+        renderList('projects-container', data.projects, (item) => `
+            <a href="${item.link || '#'}" class="project-row" ${item.link ? 'target="_blank"' : ''}>
+                <span class="pr-year">${item.year}</span>
+                <span class="pr-title">${item.title}</span>
+                <span class="pr-tag">${item.tag}</span>
+            </a>
+        `);
 
         // Skills
-        const skillsContainer = document.getElementById('skills-container');
-        if (skillsContainer) {
-            skillsContainer.innerHTML = '';
-            data.skills.forEach(skill => {
-                const span = document.createElement('span');
-                span.textContent = skill;
-                skillsContainer.appendChild(span);
-            });
-        }
+        renderList('skills-container', data.skills, (item) => `<span>${item}</span>`);
+
+        // Links (Connect)
+        renderList('links-container', data.links, (item) => `
+            <a href="${item.url}" target="_blank" class="nav-item circle-btn" style="text-decoration: none;">
+                ${item.platform}: ${item.label}
+            </a>
+        `);
 
         // Footer
         if (document.getElementById('copyright-text')) {
-            document.getElementById('copyright-text').innerHTML = `&copy; ${new Date().getFullYear()} ARCHIVE_${data.user.handle.split(' ')[0]}. ALL RIGHTS RESERVED.`;
+            document.getElementById('copyright-text').innerHTML = `&copy; ${new Date().getFullYear()} ARCHIVE_0x653o. ALL RIGHTS RESERVED.`;
+        }
+
+        initAnimations();
+    }
+
+    function setText(id, text) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    }
+
+    function renderList(containerId, list, templateFn) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = list.map(templateFn).join('');
         }
     }
 
-    function initAnimations() {
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
+    function initLanguageToggle() {
+        const enBtn = document.getElementById('lang-en');
+        const koBtn = document.getElementById('lang-ko');
 
+        enBtn.addEventListener('click', () => {
+            if (currentLang === 'en') return;
+            currentLang = 'en';
+            updateLangUI();
+            render('en');
+        });
+
+        koBtn.addEventListener('click', () => {
+            if (currentLang === 'ko') return;
+            currentLang = 'ko';
+            updateLangUI();
+            render('ko');
+        });
+    }
+
+    function updateLangUI() {
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`lang-${currentLang}`).classList.add('active');
+    }
+
+    function initAnimations() {
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('active');
-                    }, index * 100);
-                    observer.unobserve(entry.target);
+                    entry.target.classList.add('active');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
     // Ambient Glow Parallax
@@ -127,9 +174,4 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = (e.clientY / window.innerHeight - 0.5) * 50;
         glow.style.transform = `translate(${x}px, ${y}px)`;
     });
-
-    console.log(
-        "%c 0x653o // ARCHIVE COLLECTIVE ",
-        "color: #ffffff; background: #000000; padding: 10px; font-family: serif; font-size: 16px; border: 1px solid #333;"
-    );
 });
