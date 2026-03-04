@@ -5,10 +5,17 @@
     "user": {
         "name": "JunSeo",
         "handle": "0x653o · Mu1aq",
-        "role": "Security Researcher",
+        "email": "6_s3o.xin@sju.ac.kr",
+        "role": "Pentest Researcher",
         "location": "Seoul, KR",
         "bio": "Studying the deep architecture of complex systems to discover vulnerabilities where they are least expected.",
-        "status": "ONLINE_RESEARCHING"
+        "about": "A cybersecurity researcher focused on the internals of modern software.",
+        "v1_bio": "Studying Cybersecurity research of real-world exploitation and deep system internals.\n I deconstruct complex systems to build safer architectures and discover novel attack vectors.\n Also work hard(not pretty hard, but try to) for rest and peace someday.",
+        "status": "Sejong univ. sophomore / studying hard...."
+    },
+    "bio": {
+        "title": "ABOUT",
+        "content": "A cybersecurity researcher focused on the internals of modern software. I deconstruct systems—from the V8 engine's JIT optimizations to the core of Linux and macOS kernels—to build more resilient architectures."
     },
     "affiliations": [
         "· RedCat Pentesting Team",
@@ -23,26 +30,70 @@
         "Advanced Web Security",
         "Windows Internals & Kernel Exploitation"
     ],
-    "focus": [
+    "interests": [
+        "Bug Bounty Research & Responsible Disclosure",
+        "Infinite Exploration of Security Research",
+        "Networking with Various People",
+        "Attending to Conferences & Meetups",
+        "What gives me dopamine"
+    ],
+    "goals": [
+        "macOS Exploitation (Userland to Kernel)",
+        "Windows Exploitation (Userland to Kernel)",
+        "Browser Exploitation Research"
+    ],
+    "experience": [
         {
-            "category": "V8 & Browser",
-            "desc": "Currently on hold"
+            "title": "Cyb3rPunk! club Advisor",
+            "meta": "Cyb3rPunk! 2nd Department-exclusive club Advisor · 2026.01.21 ~ "
         },
         {
-            "category": "Kernel Internals",
-            "desc": "Currently on hold"
+            "title": "Academic Affairs Director at SSG",
+            "meta": "Sejong Security Groups club Academic Affairs Director · 2026.01.21 ~ "
+        },
+        {
+            "title": "General Manager at SSG",
+            "meta": "Sejong Security Groups club General Manager · 2025.09.01 ~ 2026.01.20"
+        },
+        {
+            "title": "Cyb3rPunk! 1st president",
+            "meta": "Cyb3rPunk! 1st Department-exclusive club president · 2025.07.01 ~ 2026.01.12 "
+        },
+        {
+            "title": "Students",
+            "meta": "Sejong Univ. · 2025 ~ "
+        }
+    ],
+    "focus": [
+        {
+            "category": "V8 Engine Exploitation",
+            "short_desc": "Currently on hold",
+            "long_desc": "JIT compilation artifacts, Turbofan optimization flaws",
+            "tag": "V8 ENGINE"
+        },
+        {
+            "category": "Linux Kernel Internals",
+            "short_desc": "Currently on hold",
+            "long_desc": "Ring 0 behaviors, privilege escalation, heap grooming",
+            "tag": "KERNEL INTERNALS"
         },
         {
             "category": "Hardware Security",
-            "desc": "Currently on hold"
+            "short_desc": "Currently on hold",
+            "long_desc": "Firmware extraction, JTAG debugging, embedded systems",
+            "tag": "HARDWARE"
         },
         {
-            "category": "Research & Disclosure",
-            "desc": "Responsible disclosure & N-day research."
+            "category": "Real-world Web Security",
+            "short_desc": "Responsible disclosure & N-day research.",
+            "long_desc": "CVE reconstruction, zero-day research in production environments",
+            "tag": "BUG BOUNTY"
         },
         {
             "category": "Networking",
-            "desc": "Building connections in the security community."
+            "short_desc": "Building connections in the security community.",
+            "long_desc": "Building connections in the security community.",
+            "tag": "NETWORKING"
         }
     ],
     "projects": [
@@ -51,6 +102,7 @@
             "title": "IPCam Research",
             "tag": "HARDWARE",
             "desc": "Firmware extraction & mobile app decompilation. 5 CVEs / 3 KVEs.",
+            "long_desc": "Analyzing vulnerabilities in IP Cameras through firmware extraction, reverse engineering, and hardware debugging. Also decompiled and analyzed the mobile application associated with the IP cameras. Reported 5 CVEs and 3 KVEs.",
             "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis"
         },
         {
@@ -58,6 +110,7 @@
             "title": "Web3 BugBounty",
             "tag": "DEFI, ETH",
             "desc": "Ethernaut solving & DeFi bug hunting.",
+            "long_desc": "Solved Ethernaut challenges and conducted bug hunting targeting BlackHole DeFi on code4rena. Submitted 1 report, review in progress.",
             "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH"
         },
         {
@@ -65,8 +118,14 @@
             "title": "Reflective XSS Fuzzer",
             "tag": "WEB_SEC",
             "desc": "Automated reflective XSS vulnerability analysis.",
+            "long_desc": "A tool that automates finding reflective XSS vulnerabilities by injecting payloads and analyzing responses. Built using Python with comprehensive payload lists.",
             "link": ""
         }
     ],
-    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "Forensics", "Fuzzing", "Vulnerability Research"]
+    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "Forensics", "Fuzzing", "Vulnerability Research"],
+    "ambitions": [
+        "Compete in Pwn2Own",
+        "Reach DEFCON Finals",
+        "Conduct 0-day Vulnerability Research"
+    ]
 }

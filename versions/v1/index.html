@@ -18,8 +18,8 @@
                         <span class="material-symbols-outlined">bug_report</span> 
                     </div>
                     <div class="profile-info">
-                        <h1>JunSeo (0x653o)</h1>
-                        <p class="subtitle">Sejong univ. sophomore</p>
+                        <h1 id="user-name">JunSeo (0x653o)</h1>
+                        <p id="user-role" class="subtitle">Sejong univ. sophomore</p>
                     </div>
                 </div>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -36,7 +36,7 @@
                 About Me
             </h2>
             <div class="card about-card">
-                <p class="description">
+                <p id="about-text" class="description">
                     Studying Cybersecurity research of real-world exploitation and deep system internals. <br>
                     I deconstruct complex systems to build safer architectures and discover novel attack vectors. <br>
                     Also work hard(not pretty hard, but try to) for rest and peace someday.
@@ -47,7 +47,7 @@
                     <h3 class="about-subtitle">
                         Current Affiliation
                     </h3>
-                    <ul class="about-list">
+                    <ul id="affiliations-container" class="about-list">
                         <li>RedCat pentesting team</li>
                         <li>Cyb3rPunk! (Sejong Univ. Department-exclusive Security Club)</li>
                         <li>SSG (Sejong Security Club)</li>
@@ -60,10 +60,11 @@
                     <h3 class="about-subtitle">
                         <span class="emoji">📚</span> Currently Studying
                     </h3>
-                    <ul class="about-list">
+                    <ul id="studying-container" class="about-list">
                         <li>Algorithms & Data Structures</li>
                         <li>Multi-threaded JavaScript & Concurrency Patterns</li>
                         <li>C & C++ & python (For to be cool scriptor 😁)</li>
+                    </ul>
                 </div>
 
 
@@ -72,7 +73,7 @@
                     <h3 class="about-subtitle">
                         <span class="emoji">💡</span> Interests
                     </h3>
-                    <ul class="about-list">
+                    <ul id="interests-container" class="about-list">
                         <li>Bug Bounty Research & Responsible Disclosure</li>
                         <li>Infinite Exploration of Security Research</li>
                         <li>Networking with Various People</li>
@@ -87,7 +88,7 @@
                     <h3 class="about-subtitle">
                         <span class="emoji">🚀</span> Future Goals
                     </h3>
-                    <ul class="about-list">
+                    <ul id="goals-container" class="about-list">
                         <li>macOS Exploitation (Userland to Kernel)</li>
                         <li>Windows Exploitation (Userland to Kernel)</li>
                         <li>Browser Exploitation Research</li>
@@ -100,7 +101,7 @@
                     <h3 class="about-subtitle">
                         <span class="emoji">🎯</span> Ultimate Focus
                     </h3>
-                    <ul class="about-list">
+                    <ul id="focus-container" class="about-list">
                         <li><strong>V8 Engine Exploitation:</strong> JIT compilation artifacts, Turbofan optimization flaws</li>
                         <li><strong>Linux Kernel Internals:</strong> Ring 0 behaviors, privilege escalation, heap grooming</li>
                         <li><strong>Hardware Hacking:</strong> Firmware extraction, JTAG debugging, embedded systems</li>
@@ -114,7 +115,7 @@
                     <h3 class="about-subtitle">
                         <span class="emoji">🏆</span> Ultimate Ambitions
                     </h3>
-                    <ul class="about-list highlight-list">
+                    <ul id="ambitions-container" class="about-list highlight-list">
                         <li>Compete in <strong>Pwn2Own</strong></li>
                         <li>Reach <strong>DEFCON Finals</strong></li>
                         <li>Conduct <strong>0-day Vulnerability Research</strong></li>
@@ -125,7 +126,11 @@
                 <div class="info-grid" style="margin-top: 24px;">
                     <div class="info-item">
                         <span class="material-symbols-outlined">location_on</span>
-                        <span>Seoul, KR</span>
+                        <span id="user-location">Seoul, KR</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">info</span>
+                        <span id="system-status">Sejong univ. sophomore</span>
                     </div>
                     <div class="info-item">
                         <span class="material-symbols-outlined">translate</span>
@@ -147,7 +152,7 @@
             </div>
 
             <!-- project cards -->
-            <div class="list-container">
+            <div id="projects-container" class="list-container">
                 <!-- Project 1 -->
                 <div class="list-item clickable" data-link="https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis">
                     <div class="list-item-icon">
@@ -174,56 +179,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="list-item clickable" data-link="https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">task</span>
-                    </div>
-                    <div class="list-item-content">
-                        <div class="list-item-header">
-                            <h3>SSG Club Project - Web3 BugBounty Project ETH</h3>
-                            <span class="material-symbols-outlined arrow">chevron_right</span>
-                        </div>
-                        <p class="list-item-meta">Vitalik Buterin 등골 브레이커 (Web3 BugBounty Project ETH) - Project Leader · 2025.09.01 - 2026.01.16</p>
-                        <p class="list-item-description">
-                            Repository access is public. <br>
-                            1. solve wargame(<a href="https://ethernaut.openzeppelin.com/">Ethernaut</a>, 30 challenges) and wrote write-up in gitbook and put exploit code in github. <br>
-                            2. base on the wargame, do bug hunting target <a href="https://blackhole.xyz/">BlackHole DeFi<a> from platform <a href="https://code4rena.com/">code4rena</a> . <br>
-                            3. submit 1 report and Review is in progress. (The total duration of bug hunting available was 2 weeks because of we were porgressing porject according to the club's regulations at the time.)
-                        </p>
-                        <div class="tag-list">
-                            <span class="tag">Solidity</span>
-                            <span class="tag">Remix IDE</span>
-                            <span class="tag">Ethernaut</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="list-item clickable" data-link="">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">automation</span>
-                    </div>
-                    <div class="list-item-content">
-                        <div class="list-item-header">
-                            <h3>reflective xss fuzzer</h3>
-                            <span class="material-symbols-outlined arrow">chevron_right</span>
-                        </div>
-                        <p class="list-item-meta">Open Source · 2023.09.01 - 2023.12.29 </p>
-                        <p class="list-item-description">
-                            Highschool project for subject name '과학과제연구', which is about Science Research project in School-level but can do as a team or personal. <br>
-                            I do it all by myself because there is no team member who want to join. <br>
-                            A tool that automates the process of finding reflective XSS vulnerabilities in web applications by injecting various payloads and analyzing responses. <br>
-                            Built using Python and contains a comprehensive payload list sourced from public repositories and security communities. <br>
-                            After come to college, I lost my code. So I am going to re-create it again soon..... <br>
-                        </p>
-                        <div class="tag-list">
-                            <span class="tag">Python</span>
-                            <span class="tag">Fuzzing</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -234,7 +189,7 @@
                 <span class="material-symbols-outlined">business_center</span>
                 Experience
             </h2>
-            <div class="list-container">
+            <div id="experience-container" class="list-container">
                 
                 <div class="list-item">
                     <div class="list-item-icon">
@@ -243,46 +198,6 @@
                     <div class="list-item-content">
                         <h3>Cyb3rPunk! club Advisor</h3>
                         <p class="list-item-meta">Cyb3rPunk! 2nd Department-exclusive club Advisor · 2026.01.21 ~ </p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">groups</span>
-                    </div>
-                    <div class="list-item-content">
-                        <h3>Academic Affairs Director at SSG</h3>
-                        <p class="list-item-meta">Sejong Security Groups club Academic Affairs Director · 2026.01.21 ~ </p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">groups</span>
-                    </div>
-                    <div class="list-item-content">
-                        <h3>General Manager at SSG</h3>
-                        <p class="list-item-meta">Sejong Security Groups club General Manager · 2025.09.01 ~ 2026.01.20</p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">groups</span>
-                    </div>
-                    <div class="list-item-content">
-                        <h3>Cyb3rPunk! 1st president</h3>
-                        <p class="list-item-meta">Cyb3rPunk! 1st Department-exclusive club president · 2025.07.01 ~ 2026.01.12 </p>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <div class="list-item-icon">
-                        <span class="material-symbols-outlined">school</span>
-                    </div>
-                    <div class="list-item-content">
-                        <h3>Students</h3>
-                        <p class="list-item-meta">Sejong Univ. · 2025 ~ </p>
                     </div>
                 </div>
             </div>
@@ -296,67 +211,12 @@
             </h2>
             <div class="card">
                 <h3 class="subsection-title">Core Technologies</h3>
-                <div class="skill-grid">
+                <div id="skills-container" class="skill-grid">
                     <div class="skill-item">
                         <span class="material-symbols-outlined">code</span>
                         <span>python</span>
                     </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">code</span>
-                        <span>C</span>
-                    </div>  
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">javascript</span>
-                        <span>JavaScript</span>
-                    </div>
                 </div>
-
-                <h3 class="subsection-title">Tools & Infrastructure</h3>
-                <div class="skill-grid">
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">terminal</span>
-                        <span>bash</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">bug_report</span>
-                        <span>GDB & IDA</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">commit</span>
-                        <span>Git</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">security</span>
-                        <span>Wireshark</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">shield</span>
-                        <span>burp suite</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">security</span>
-                        <span>pwntools</span>
-                    </div>
-                </div>
-                <h3 class="subsection-title">Offensive Technologies</h3>
-                <div class="skill-grid">
-                    
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">threat_intelligence</span>
-                        <span>Osint</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">web</span>
-                        <span>Web Hacking</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">bug_report</span>
-                        <span>Classic Binary Exploit</span>
-                    </div>
-                    <div class="skill-item">
-                        <span class="material-symbols-outlined">private_connectivity</span>
-                        <span>network</span>
-                    </div>
             </div>
         </section>
 
