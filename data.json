@@ -4,39 +4,41 @@
     },
     "user": {
         "name": "JunSeo",
-        "handle": "0x653o",
+        "handle": "0x653o · Mu1aq",
         "role": "Security Researcher",
         "location": "Seoul, KR",
         "bio": "Studying the deep architecture of complex systems to discover vulnerabilities where they are least expected.",
         "status": "ONLINE_RESEARCHING"
     },
     "affiliations": [
-        "RedCat Pentesting Team",
-        "Cyb3rPunk! (Advisor)",
-        "SSG (Academic Director)",
-        "Sejong University"
+        "· RedCat Pentesting Team",
+        "· Cyb3rPunk! (Advisor)",
+        "· SSG (Academic Director)",
+        "· Sejong University"
     ],
     "studying": [
         "Algorithms & Data Structures",
         "Multi-threaded Concurrency Patterns",
-        "Low-level Exploit Scripting (C/C++)"
+        "Low-level Exploit Scripting (C/C++)",
+        "Advanced Web Security",
+        "Windows Internals & Kernel Exploitation"
     ],
     "focus": [
         {
             "category": "V8 & Browser",
-            "desc": "JIT artifacts and Turbofan optimization analysis."
+            "desc": "Currently on hold"
         },
         {
             "category": "Kernel Internals",
-            "desc": "Privilege escalation and heap grooming at Ring 0."
+            "desc": "Currently on hold"
         },
         {
             "category": "Hardware Security",
-            "desc": "Firmware extraction and JTAG debugging."
+            "desc": "Currently on hold"
         },
         {
-            "category": "Bug Bounty",
-            "desc": "Responsible disclosure & zero-day research."
+            "category": "Research & Disclosure",
+            "desc": "Responsible disclosure & N-day research."
         },
         {
             "category": "Networking",
@@ -54,7 +56,7 @@
         {
             "year": "2026",
             "title": "Web3 BugBounty",
-            "tag": "DEFI",
+            "tag": "DEFI, ETH",
             "desc": "Ethernaut solving & DeFi bug hunting.",
             "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH"
         },
@@ -66,5 +68,5 @@
             "link": ""
         }
     ],
-    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS"]
+    "skills": ["PYTHON", "C/C++", "JAVASCRIPT", "GDB", "IDA", "BURP", "PWNTOOLS", "Forensics", "Fuzzing", "Vulnerability Research"]
 }
