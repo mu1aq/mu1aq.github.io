@@ -2,7 +2,7 @@
     "en": {
         "user": {
             "name": "Jun",
-            "handle": "0x653o · Mu1aq",
+            "handle": "mu1aq",
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "Student",
             "location": "SEOUL / KR",
@@ -64,8 +64,8 @@
             { "year": "2023", "title": "Reflective XSS Fuzzer", "tag": "WEB_SEC", "link": "" }
         ],
         "links": [
-            { "platform": "GitHub", "url": "https://github.com/0x653o", "label": "@0x653o" },
-            { "platform": "X", "url": "https://x.com/6_53o", "label": "@6_53o" },
+            { "platform": "GitHub", "url": "https://github.com/mu1aq", "label": "@mu1aq" },
+            { "platform": "X", "url": "https://x.com/mu1aq_", "label": "@mu1aq_" },
             { "platform": "Instagram", "url": "https://instagram.com/tlswnstj_s.j.s", "label": "@tlswnstj_s.j.s" }
         ],
         "skills": ["Python", "C/C++", "JavaScript" , "GDB", "IDA", "BurpSuite", "pwntools", "OSINT"],
@@ -90,7 +90,7 @@
     "ko": {
         "user": {
             "name": "Jun",
-            "handle": "0x653o · Mu1aq",
+            "handle": "mu1aq",
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "학생",
             "location": "대한민국 / 서울",
@@ -152,8 +152,8 @@
             { "year": "2023", "title": "반사형 XSS 퍼저", "tag": "WEB_SEC", "link": "" }
         ],
         "links": [
-            { "platform": "GitHub", "url": "https://github.com/0x653o", "label": "@0x653o" },
-            { "platform": "X", "url": "https://x.com/6_53o", "label": "@6_53o" },
+            { "platform": "GitHub", "url": "https://github.com/mu1aq", "label": "@mu1aq" },
+            { "platform": "X", "url": "https://x.com/mu1aq_", "label": "@mu1aq_" },
             { "platform": "Instagram", "url": "https://instagram.com/tlswnstj_s.j.s", "label": "@tlswnstj_s.j.s" }
         ],
         "skills": ["Python", "C/C++", "JavaScript" , "GDB", "IDA", "BurpSuite", "pwntools", "OSINT"],

@@ -620,7 +620,7 @@ body {
     color: var(--text-primary);
 }
 
-/* Monospace id for connect handles (clear digits, e.g. mu1aq / 6_53o) */
+/* Monospace id for connect handles (clear digits, e.g. mu1aq / mu1aq_) */
 .mention-id {
     font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     font-size: 12px;

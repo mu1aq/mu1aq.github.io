@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Footer
         if (document.getElementById('copyright-text')) {
-            document.getElementById('copyright-text').innerHTML = `&copy; ${new Date().getFullYear()} ARCHIVE_0x653o. ALL RIGHTS RESERVED.`;
+            document.getElementById('copyright-text').innerHTML = `&copy; ${new Date().getFullYear()} ARCHIVE_mu1aq. ALL RIGHTS RESERVED.`;
         }
 
         initAnimations();
