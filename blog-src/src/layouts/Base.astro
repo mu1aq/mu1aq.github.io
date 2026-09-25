@@ -150,17 +150,17 @@ const dfmt = (d: Date) => d.toISOString().slice(0, 10);
         })();
 
         // Click a heading (its text is the anchor) → set the hash + copy the
-        // section URL to the clipboard, then flash a small toast.
-        document.querySelectorAll('.prose .heading-link').forEach((a) => {
-            const anchor = a as HTMLAnchorElement;
-            anchor.addEventListener('click', () => {
-                // native anchor already sets location.hash + scrolls
-                const hash = anchor.getAttribute('href') || '';
-                const url = location.origin + location.pathname + hash;
-                navigator.clipboard?.writeText(url).catch(() => {});
-                anchor.setAttribute('data-copied', '1');
-                setTimeout(() => anchor.removeAttribute('data-copied'), 1200);
-            });
+        // section URL to the clipboard, then flash a small toast. Delegated so
+        // headings of an unlocked (decrypted-later) post work too.
+        document.addEventListener('click', (e) => {
+            const anchor = (e.target as Element).closest?.('.prose .heading-link');
+            if (!anchor) return;
+            // native anchor already sets location.hash + scrolls
+            const hash = anchor.getAttribute('href') || '';
+            const url = location.origin + location.pathname + hash;
+            navigator.clipboard?.writeText(url).catch(() => {});
+            anchor.setAttribute('data-copied', '1');
+            setTimeout(() => anchor.removeAttribute('data-copied'), 1200);
         });
 
         // Scroll-spy: highlight the current section in the floating rail

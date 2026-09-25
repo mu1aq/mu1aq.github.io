@@ -2,11 +2,11 @@
     "en": {
         "user": {
             "name": "Jun",
-            "handle": "mu1aq",
+            "handle": "mu1aq · k4mi",
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "Student",
             "location": "SEOUL / KR",
-            "bio": "Studying the deep architecture of complex systems to discover logic bugs and memory corruption. Also studying Red team operation.",
+            "bio": "Studying the deep internal architecture of complex systems to discover security properties that automated systems miss.",
             "status": "Sejong Univ. Sophomore"
         },
         "about": {
@@ -17,11 +17,11 @@
     "ko": {
         "user": {
             "name": "Jun",
-            "handle": "mu1aq",
+            "handle": "mu1aq · k4mi",
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "학생",
             "location": "대한민국 / 서울",
-            "bio": "복잡한 시스템의 아키텍처를 연구하며 로직버그와 memory corruption을 발견하는 데 집중합니다. 또한 Red Team을 공부합니다.",
+            "bio": "복잡한 시스템의 아키텍처를 연구하며 자동화된 시스템이 간과하는 보안 특성을 발견하는 것에 초점을 맞추고 있습니다",
             "status": "세종대학교 2학년 / 학업 중,,,"
         },
         "about": {
@@ -33,9 +33,14 @@
         "affiliations": [
             "Cyb3rPunk!",
             "SSG (Security . Security . Group)",
-            "Red Cat (Red Teamming focus research team)"
+            "Red Cat (Red Teamming focus team)"
         ],
         "timeline": [
+            {
+                "year": "2026",
+                "event": "Allied Power Exercise 2026 (a.k.a. APEX 2026) from Cyber Korea Summit 2026 ",
+                "detail": "Served as Black team (Blue team support staff, especially user simulation team) at APEX 2026 which is part of Cyber Summit Korea 2026."
+            },
             {
                 "year": "2026",
                 "event": "DEF CON 34 CTF Finalist",
@@ -139,11 +144,6 @@
                 "platform": "Sec Blog",
                 "handle": "mu1aq.github.io/blog",
                 "url": "/blog/"
-            },
-            {
-                "platform": "Tistory",
-                "handle": "653o.tistory.com",
-                "url": "https://653o.tistory.com/"
             },
             {
                 "platform": "Velog",

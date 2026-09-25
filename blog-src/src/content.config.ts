@@ -6,9 +6,10 @@ const posts = defineCollection({
     // Either a flat file — "my-post.mdx" (slug = my-post) — or a folder with
     // "my-post/index.mdx" (slug = my-post; the folder lets images live next to
     // the post). Both work; use a folder only when the post has local images.
+    // Password-locked posts go under "locked/" (gitignored); it isn't part of the slug.
     pattern: '**/*.{md,mdx}',
     base: './src/content/posts',
-    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '').replace(/\/index$/, ''),
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '').replace(/^locked\//, ''),
   }),
   schema: ({ image }) =>
     z.object({
@@ -19,6 +20,7 @@ const posts = defineCollection({
       description: z.string().optional(),
       cover: image().optional(),
       draft: z.boolean().default(false),
+      password: z.string().optional(), // set → body is encrypted at build (see Locked.astro)
     }),
 });
 

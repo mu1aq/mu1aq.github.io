@@ -4,9 +4,20 @@ import { Image, getImage } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Toc from '../../components/Toc.astro';
 import TocRail from '../../components/TocRail.astro';
+import Locked from '../../components/Locked.astro';
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+    const all = await getCollection('posts');
+    for (const post of all) {
+        // locked posts must live in the gitignored posts/locked/ — this repo
+        // (and blog-src itself) is public, so their source can't be committed
+        const inLocked = /[\\/]posts[\\/]locked[\\/]/.test(post.filePath ?? '');
+        if (post.data.password && !inLocked)
+            throw new Error(`"${post.id}" has a password but is not under src/content/posts/locked/`);
+        if (inLocked && !post.data.password)
+            throw new Error(`"${post.id}" is under posts/locked/ but has no password`);
+    }
+    const posts = all.filter((p) => !p.data.draft).sort(
         (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
     );
     return posts.map((post, i) => ({
@@ -50,11 +61,11 @@ const ogImage = post.data.cover
         )}
     </header>
 
-    <Toc headings={headings} />
-    <TocRail headings={headings} />
+    {!post.data.password && <Toc headings={headings} />}
+    {!post.data.password && <TocRail headings={headings} />}
 
     <div class="prose">
-        <Content />
+        {post.data.password ? <Locked password={post.data.password}><Content /></Locked> : <Content />}
     </div>
 
     <nav class="post-nav">

@@ -3,10 +3,13 @@
 // here every time. Use this instead.
 //
 //   node scripts/post.mjs list
-//   node scripts/post.mjs new <slug>
+//   node scripts/post.mjs new <slug> [--locked]
 //   node scripts/post.mjs rm  <slug>
 //
 // (or via npm: `npm run posts`, `npm run post -- new <slug>`, `npm run post -- rm <slug>`)
+//
+// --locked puts the post under posts/locked/ (gitignored — never committed) with a
+// `password:` field; the build encrypts its body so only password holders can read it.
 import { readdir, readFile, writeFile, rm, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -25,7 +28,7 @@ async function walk(dir, base = '') {
   return out;
 }
 
-const slugOf = (rel) => rel.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '');
+const slugOf = (rel) => rel.replace(/\.(md|mdx)$/, '').replace(/\/index$/, '').replace(/^locked\//, '');
 const fm = (c, k) => {
   const m = c.match(new RegExp(`^${k}:\\s*(.+)$`, 'm'));
   return m ? m[1].trim().replace(/^["']|["']$/g, '') : '';
@@ -33,12 +36,14 @@ const fm = (c, k) => {
 
 // resolve a slug to its on-disk source (flat file or folder), or null
 function resolve(slug) {
-  for (const cand of [`${slug}.mdx`, `${slug}.md`]) if (existsSync(POSTS + cand)) return cand;
-  if (existsSync(POSTS + slug)) return slug; // folder (slug/index.*)
+  for (const dir of ['', 'locked/']) {
+    for (const cand of [`${slug}.mdx`, `${slug}.md`]) if (existsSync(POSTS + dir + cand)) return dir + cand;
+    if (existsSync(POSTS + dir + slug)) return dir + slug; // folder (slug/index.*)
+  }
   return null;
 }
 
-const [cmd, arg] = process.argv.slice(2);
+const [cmd, arg, flag] = process.argv.slice(2);
 
 if (cmd === 'list') {
   const rows = [];
@@ -46,19 +51,21 @@ if (cmd === 'list') {
     const slug = slugOf(f);
     if (slug.startsWith('_')) continue; // hidden keep-alive placeholder(s)
     const c = await readFile(POSTS + f, 'utf8');
-    rows.push({ slug, date: fm(c, 'date'), draft: fm(c, 'draft') === 'true', title: fm(c, 'title'), file: f });
+    rows.push({ slug, date: fm(c, 'date'), draft: fm(c, 'draft') === 'true', locked: !!fm(c, 'password'), title: fm(c, 'title'), file: f });
   }
   rows.sort((a, b) => (a.date < b.date ? 1 : -1));
   console.log(`${rows.length} post(s):`);
   for (const r of rows) {
-    console.log(`  ${(r.date || '----------').padEnd(11)} ${r.slug.padEnd(24)} ${r.draft ? '[draft] ' : ''}${r.title}`);
+    console.log(`  ${(r.date || '----------').padEnd(11)} ${r.slug.padEnd(24)} ${r.draft ? '[draft] ' : ''}${r.locked ? '[locked] ' : ''}${r.title}`);
   }
 } else if (cmd === 'new') {
   if (!arg) { console.error('usage: post new <slug>'); process.exit(1); }
   if (arg.startsWith('_')) { console.error('slug cannot start with "_"'); process.exit(1); }
   if (resolve(arg)) { console.error(`post "${arg}" already exists`); process.exit(1); }
   const today = new Date().toISOString().slice(0, 10);
-  const dir = `${POSTS}${arg}/`;
+  const locked = flag === '--locked';
+  const rel = `${locked ? 'locked/' : ''}${arg}`;
+  const dir = `${POSTS}${rel}/`;
   // folder post: index.mdx + a dedicated images/ folder (.gitkeep so it commits empty)
   await mkdir(`${dir}images/`, { recursive: true });
   await writeFile(`${dir}images/.gitkeep`, '');
@@ -69,7 +76,7 @@ author: "mu1aq"
 tags: []
 description: ""
 # cover: "./images/cover.png"   # 썸네일: 이미지를 images/ 에 넣고 이 줄 주석 해제
-draft: false
+draft: false${locked ? '\npassword: ""                  # 필수 — 이 글 전용 비밀번호 (길고 랜덤하게)' : ''}
 ---
 
 여기에 작성.
@@ -77,8 +84,9 @@ draft: false
 {/* 이미지: images/ 폴더에 넣고  ![설명](./images/파일.png)  로 삽입 */}
 `;
   await writeFile(`${dir}index.mdx`, tmpl);
-  console.log(`created src/content/posts/${arg}/index.mdx  → /blog/posts/${arg}/`);
-  console.log(`  images → src/content/posts/${arg}/images/   (reference as ./images/...)`);
+  console.log(`created src/content/posts/${rel}/index.mdx  → /blog/posts/${arg}/`);
+  console.log(`  images → src/content/posts/${rel}/images/   (reference as ./images/...)`);
+  if (locked) console.log('  locked: set `password:` — this folder is gitignored, back it up yourself');
   console.log('edit it, then:  npm run build');
 } else if (cmd === 'rm') {
   if (!arg) { console.error('usage: post rm <slug>'); process.exit(1); }
@@ -90,5 +98,5 @@ draft: false
   execSync('npm run build', { cwd: ROOT, stdio: 'inherit' });
   console.log(`done — "${arg}" is gone from /blog.`);
 } else {
-  console.log('usage: node scripts/post.mjs <list | new <slug> | rm <slug>>');
+  console.log('usage: node scripts/post.mjs <list | new <slug> [--locked] | rm <slug>>');
 }

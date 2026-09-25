@@ -1,0 +1,131 @@
+---
+// Password-locked post body. On build the rendered body (plus password) is
+// parked in data-lock-plain; scripts/postbuild.mjs then inlines its images and
+// replaces it with AES-GCM ciphertext before anything reaches ../blog.
+// In dev the body just renders, so drafting still previews.
+interface Props {
+    password: string;
+}
+
+const { password } = Astro.props;
+const html = await Astro.slots.render('default');
+const plain = Buffer.from(JSON.stringify({ password, html })).toString('base64');
+---
+
+{import.meta.env.DEV ? (
+    <Fragment set:html={html} />
+) : (
+    <div id="locked" data-lock-plain={plain}>
+        <form class="lock-form">
+            <p class="lock-title">[LOCKED]</p>
+            <p class="lock-desc">This post is locked. Enter the password to read it.</p>
+            <div class="lock-row">
+                <input type="password" name="pw" aria-label="Password" autocomplete="current-password" required />
+                <button type="submit">UNLOCK</button>
+            </div>
+            <p class="lock-msg" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+)}
+
+<script>
+    const box = document.getElementById('locked');
+    const form = box?.querySelector('form');
+    if (box?.dataset.lock && form) {
+        const raw = Uint8Array.from(atob(box.dataset.lock), (c) => c.charCodeAt(0));
+        const input = form.querySelector('input')!;
+        const button = form.querySelector('button')!;
+        const msg = form.querySelector('.lock-msg')!;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            button.disabled = true;
+            msg.textContent = 'decrypting…';
+            try {
+                const pw = await crypto.subtle.importKey(
+                    'raw', new TextEncoder().encode(input.value), 'PBKDF2', false, ['deriveKey']
+                );
+                const key = await crypto.subtle.deriveKey(
+                    { name: 'PBKDF2', salt: raw.slice(0, 16), iterations: Number(box.dataset.iter), hash: 'SHA-256' },
+                    pw, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+                );
+                const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: raw.slice(16, 28) }, key, raw.slice(28));
+                box.innerHTML = new TextDecoder().decode(plain);
+                // innerHTML never runs <script>s (e.g. Tabs) — re-create them so they do
+                box.querySelectorAll('script').forEach((old) => {
+                    const s = document.createElement('script');
+                    for (const a of old.attributes) s.setAttribute(a.name, a.value);
+                    s.textContent = old.textContent;
+                    old.replaceWith(s);
+                });
+                if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();
+            } catch {
+                msg.textContent = 'Wrong password.';
+                button.disabled = false;
+                input.select();
+            }
+        });
+    }
+</script>
+
+<style>
+    .lock-form {
+        margin: 2em 0;
+        padding: 24px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+    }
+    .lock-title {
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        color: var(--fg-muted);
+        margin-bottom: 8px;
+    }
+    .lock-desc {
+        margin-bottom: 16px;
+    }
+    .lock-row {
+        display: flex;
+        gap: 8px;
+    }
+    .lock-row input {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 12px;
+        background: var(--bg);
+        color: var(--fg);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        font: inherit;
+    }
+    .lock-row input:focus {
+        outline: none;
+        border-color: var(--fg-muted);
+    }
+    .lock-row button {
+        padding: 8px 16px;
+        background: transparent;
+        color: var(--fg);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        font: inherit;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+    }
+    .lock-row button:hover:not(:disabled) {
+        border-color: var(--fg-muted);
+    }
+    .lock-row button:disabled {
+        opacity: 0.5;
+        cursor: wait;
+    }
+    .lock-msg {
+        margin-top: 10px;
+        min-height: 1.4em;
+        font-size: 12px;
+        color: var(--fg-muted);
+    }
+</style>
