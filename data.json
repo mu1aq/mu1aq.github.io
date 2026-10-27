@@ -37,6 +37,17 @@
         ],
         "timeline": [
             {
+                "year": "2026.10",
+                "event": "HITCON ctf 2026",
+                "detail": "5th at HITCON ctf 2026"
+            },
+            {
+                "year": "2026.08 - 2026.10",
+                "event": "WhiteHat School 4th (KISA) - Window Kernel 1 Day EoP project",
+                "detail": "Try to reproduce EoP PoC of CVE-2025-24983, CVE-2026-58632. Well done about CVE-2025-24983 with success rate 97%, need to rediscover target Func of CVE-2026-58632 at post-project of this project",
+                "group": "win-kernel-1day-lpe"
+            },
+            {
                 "year": "2026.09",
                 "event": "Allied Power Exercise 2026 (a.k.a. APEX 2026) from Cyber Korea Summit 2026 ",
                 "detail": "Served as Black team (Blue team support staff, especially user simulation team) at APEX 2026 which is part of Cyber Summit Korea 2026."
@@ -85,14 +96,21 @@
         ],
         "projects": [
             {
-                "year": "2026",
+                "year": "2025.07 - 2026.10",
+                "title": "Window kernel 1-day EoP",
+                "tag": "Window, Kernel, EoP, LPE",
+                "link": "",
+                "group": "win-kernel-1day-lpe"
+            },
+            {
+                "year": "2025.09 - 2026.01",
                 "title": "IPCam Research",
                 "tag": "HARDWARE, Android",
                 "link": "https://github.com/2025-SSG-Embbeded-Project/IpCam-Vuln-Analysis",
                 "group": "ipcam"
             },
             {
-                "year": "2026",
+                "year": "2025.09 - 2026.01",
                 "title": "Web3 BugBounty",
                 "tag": "DEFI, ETH",
                 "link": "https://github.com/SSG-web3-BugBounty-Project-ETH/web3_BugBounty_Project_ETH",
@@ -126,6 +144,11 @@
                 "platform": "Signal",
                 "url": "https://signal.me/#eu/TP81vnXy5VKjrKmOGD7MNlr_-k8brGmvRJVOV-Rg_s9ztCKDlZNNc7ZIWGPDsFJy",
                 "label": "@mu1aq"
+            },
+            {
+                "platform": "HTB",
+                "url": "https://app.hackthebox.com/users/3268222",
+                "label": "Mu1aq"
             }
         ],
         "skills": [
