@@ -6,12 +6,12 @@
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "Student",
             "location": "SEOUL / KR",
-            "bio": "Studying the deep internal architecture of complex systems to discover security properties that automated systems miss.",
+            "bio": "focusing on researching the internal structure of systems to identify security characteristics that automated systems overlook.",
             "status": "Sejong Univ. Sophomore"
         },
         "about": {
             "title": "ABOUT",
-            "content": "A cybersecurity researcher focused on the internals of modern software. Lately, to sharpen my fundamentals, I've been digging into the deep internals of systems."
+            "content": "I am a student passionate about penetration testing and security research. I am interested in bug bounties and vulnerability research. I am currently studying how to identify vulnerabilities and build exploit chains, with a focus on root causes."
         }
     },
     "ko": {
@@ -21,12 +21,12 @@
             "email": "r1pp3r.mu1aq.0x0@proton.me",
             "role": "학생",
             "location": "대한민국 / 서울",
-            "bio": "복잡한 시스템의 아키텍처를 연구하며 자동화된 시스템이 간과하는 보안 특성을 발견하는 것에 초점을 맞추고 있습니다",
+            "bio": "시스템의 내부구조를 연구하며 자동화된 시스템이 간과하는 보안 특성을 발견하는 것에 초점을 맞추고 있습니다.",
             "status": "세종대학교 2학년 / 학업 중,,,"
         },
         "about": {
             "title": "ABOUT",
-            "content": "Pentesting과 보안 연구에 열정이 있는 학생입니다. 다양한 시스템을 공부하고 있습니다. 요즘은 기본기를 늘리고자 시스템의 internals를 파고들고 있습니다."
+            "content": "Pentesting과 보안 연구에 열정이 있는 학생입니다. bug bounty와 취약점 연구를 하는 데에 관심이 있습니다. root cause에 치중하며 취약점을 찾고 chaining을 하는 부분에 대해서 공부하고 있습니다."
         }
     },
     "common": {
@@ -37,33 +37,33 @@
         ],
         "timeline": [
             {
-                "year": "2026",
+                "year": "2026.09",
                 "event": "Allied Power Exercise 2026 (a.k.a. APEX 2026) from Cyber Korea Summit 2026 ",
                 "detail": "Served as Black team (Blue team support staff, especially user simulation team) at APEX 2026 which is part of Cyber Summit Korea 2026."
             },
             {
-                "year": "2026",
+                "year": "2026.08",
                 "event": "DEF CON 34 CTF Finalist",
-                "detail": "CTF Quals 6th — Jinddabi's team"
+                "detail": "7th at defcon ctf final — Jinddabi's team"
             },
             {
-                "year": "2026 ~ ",
+                "year": "2026.06 ~ 2026.12",
                 "event": "WhiteHat School 4th (KISA)",
-                "detail": "Final Acceptance / Currently Enrolled"
+                "detail": "A next-generation security leader development program organized by KISA. This program provides the latest information security training and expert mentoring opportunities to beginners and entry-level professionals in the cybersecurity field, aged 26 or younger, who wish to grow into information security professionals."
             },
             {
-                "year": "2026",
+                "year": "2026.07",
                 "event": "HSPACE Digital Forensics Challenge — 4th Place",
                 "detail": "Team 양윤모여친구함 / Digital Forensics"
             },
             {
-                "year": "2025 - 2026",
+                "year": "2025.09 - 2026.01",
                 "event": "IPCam Vulnerability Analysis Research",
                 "detail": "SSG Embedded Project / Android Security Focus",
                 "group": "ipcam"
             },
             {
-                "year": "2025 - 2026",
+                "year": "2025.09 - 2026.01",
                 "event": "Web3 BugBounty Research Project",
                 "detail": "SSG Web3 Project / Ethereum Smart Contract Auditing",
                 "group": "web3"
@@ -131,13 +131,7 @@
         "skills": [
             "Python",
             "C/C++",
-            "JavaScript",
-            "GDB",
-            "IDA",
-            "BurpSuite",
-            "pwntools",
-            "OSINT",
-            "ADB"
+            "JavaScript"
         ],
         "blogs": [
             {
